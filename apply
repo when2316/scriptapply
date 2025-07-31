@@ -1,0 +1,192 @@
+local std =require(game.ServerScriptService.std)
+local toolcd ={}
+
+workspace.toolgivers.swordgiver.swordgiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 1 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("ClassicSword") and not plr.Character:FindFirstChild("ClassicSword") then
+					local tool = game.ServerStorage.tools.ClassicSword:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.speedcoilgiver.speedcoilgiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 2 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("SpeedCoil") and not plr.Character:FindFirstChild("SpeedCoil") then
+					local tool = game.ServerStorage.tools.SpeedCoil:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.hammergiver.hammergiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 5 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("hammer") and not plr.Character:FindFirstChild("hammer") then
+					local tool = game.ServerStorage.tools.hammer:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.hyperlasergiver.hyperlasergiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 10 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("LaserGun") and not plr.Character:FindFirstChild("LaserGun") then
+					local tool = game.ServerStorage.tools.LaserGun:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.sabergiver.sabergiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 25 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("saber") and not plr.Character:FindFirstChild("saber") then
+					local tool = game.ServerStorage.tools.saber:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.carpetgiver.carpetgiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 50 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("test") and not plr.Character:FindFirstChild("test") then
+					local tool = game.ServerStorage.tools.test:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.wandgiver.wandgiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 100 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("wand") and not plr.Character:FindFirstChild("wand") then
+					local tool = game.ServerStorage.tools.wand:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+workspace.toolgivers.bhammergiver.bhammergiver.Touched:Connect(function(hit)
+	if std["checkhuman"](hit) then
+		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
+		if plr.leaderstats.Wins.Value >= 250 and plr.Character.Humanoid.Health > 0 then
+			if toolcd[plr] == nil then
+				if not plr.Backpack:FindFirstChild("banhammer") and not plr.Character:FindFirstChild("banhammer") then
+					local tool = game.ServerStorage.tools.banhammer:Clone()
+					tool.Parent = plr.Backpack
+					toolcd[plr] = true
+					task.wait(1)
+					toolcd[plr] = nil
+				end
+			end
+		end
+	end
+end)
+
+local TweenService = game:GetService("TweenService")
+local tweenInfo = TweenInfo.new(20, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+local goal = {
+	Size = Vector3.new(2500, 2500, 2500),
+	Transparency = 1
+}
+local datastore = game:GetService("DataStoreService"):GetDataStore("datastore")
+
+local function activateNuke(player)
+	local character = player.Character
+	if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+		if os.time() - player.pnukecd.Value >= 3600 then
+			player.pnukecd.Value = os.time()
+			local fallNuke = Instance.new("Part")
+			fallNuke.Color = Color3.new(0, 0, 0)
+			fallNuke.Size = Vector3.new(3, 3, 3)
+			fallNuke.Position = character.HumanoidRootPart.Position + Vector3.new(0, 150, 0)
+			fallNuke.Parent = workspace
+
+			task.wait(1.45)
+			fallNuke:Destroy()
+
+			local nuke = Instance.new("Part")
+			nuke.Shape = Enum.PartType.Ball
+			nuke.Color = Color3.new(0.670588, 0.501961, 0.0784314)
+			nuke.Size = Vector3.new(1, 1, 1)
+			nuke.Position = character.HumanoidRootPart.Position
+			nuke.CanCollide = false
+			nuke.Anchored = true
+			nuke.Material = Enum.Material.SmoothPlastic
+			nuke.Parent = workspace
+			nuke.Touched:Connect(function(hit)
+				local vicChar = hit.Parent
+				if vicChar and vicChar:FindFirstChild("Humanoid") and vicChar:FindFirstChild("HumanoidRootPart") then
+					hit.AssemblyLinearVelocity = (vicChar.HumanoidRootPart.Position - nuke.Position).Unit * 500
+					vicChar.Humanoid.Health = 0
+				end
+			end)
+			local tween = TweenService:Create(nuke, tweenInfo, goal)
+			tween:Play()
+			tween.Completed:Wait()
+
+			nuke:Destroy()
+			if game.ReplicatedStorage:FindFirstChild("countdown") then
+				game.ReplicatedStorage.countdown.Value = 5
+			end
+		end
+end
+workspace.toolgivers.nuketable.nukebutton.ClickDetector.MouseClick:Connect(function(plr)
+	if plr.leaderstats.Wins.Value >= 1000 then
+		activateNuke(plr)
+	end
+end)
