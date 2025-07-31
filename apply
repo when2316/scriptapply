@@ -1,147 +1,3 @@
-local std =require(game.ServerScriptService.std)
-local toolcd ={}
-
-workspace.toolgivers.swordgiver.swordgiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 1 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("ClassicSword") and not plr.Character:FindFirstChild("ClassicSword") then
-					local tool = game.ServerStorage.tools.ClassicSword:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.speedcoilgiver.speedcoilgiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 2 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("SpeedCoil") and not plr.Character:FindFirstChild("SpeedCoil") then
-					local tool = game.ServerStorage.tools.SpeedCoil:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.hammergiver.hammergiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 5 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("hammer") and not plr.Character:FindFirstChild("hammer") then
-					local tool = game.ServerStorage.tools.hammer:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.hyperlasergiver.hyperlasergiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 10 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("LaserGun") and not plr.Character:FindFirstChild("LaserGun") then
-					local tool = game.ServerStorage.tools.LaserGun:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.sabergiver.sabergiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 25 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("saber") and not plr.Character:FindFirstChild("saber") then
-					local tool = game.ServerStorage.tools.saber:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.carpetgiver.carpetgiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 50 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("test") and not plr.Character:FindFirstChild("test") then
-					local tool = game.ServerStorage.tools.test:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.wandgiver.wandgiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 100 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("wand") and not plr.Character:FindFirstChild("wand") then
-					local tool = game.ServerStorage.tools.wand:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-workspace.toolgivers.bhammergiver.bhammergiver.Touched:Connect(function(hit)
-	if std["checkhuman"](hit) then
-		local plr = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if plr.leaderstats.Wins.Value >= 250 and plr.Character.Humanoid.Health > 0 then
-			if toolcd[plr] == nil then
-				if not plr.Backpack:FindFirstChild("banhammer") and not plr.Character:FindFirstChild("banhammer") then
-					local tool = game.ServerStorage.tools.banhammer:Clone()
-					tool.Parent = plr.Backpack
-					toolcd[plr] = true
-					task.wait(1)
-					toolcd[plr] = nil
-				end
-			end
-		end
-	end
-end)
-
-
--- this is other code (full version in game)
-
-
-
 local TweenService = game:GetService("TweenService")
 local tweenInfo = TweenInfo.new(20, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
 local goal = {
@@ -195,3 +51,174 @@ workspace.toolgivers.nuketable.nukebutton.ClickDetector.MouseClick:Connect(funct
 		activateNuke(plr)
 	end
 end)
+local part = script.Parent
+local tool = script.Parent.Parent
+local active = false
+local atk = tool.Parent.Parent.Character
+local hrp = atk:WaitForChild("HumanoidRootPart")
+local cd = 0
+
+tool.Activated:Connect(function()
+	if cd == 0 then
+		cd = 1
+		print("atk")
+		active = true
+		atk.Humanoid:LoadAnimation(script.saberatk):Play()
+		hrp.Anchored = true
+		local hitbox = Instance.new("Part")
+		hitbox.Size = Vector3.new(25,25,25)
+		hitbox.Parent = workspace
+		hitbox.Position = hrp.Position
+		hitbox.Anchored = true
+		hitbox.Color = Color3.new(1, 0, 0.0156863)
+		hitbox.Transparency = 0.75
+		hitbox.CanCollide = false
+		hitbox.Touched:Connect(function(hit)
+			if hit.Parent:FindFirstChild("Humanoid") and hit.Parent ~= script.Parent.Parent.Parent and	active == true	then
+				local vic = hit.Parent
+				hit.AssemblyLinearVelocity=(vic.HumanoidRootPart.Position-atk.HumanoidRootPart.Position).Unit *500
+				vic:FindFirstChild("Humanoid").Health = 0
+			end
+		end)
+		task.wait(1.5)
+		hitbox:Destroy()
+		hrp.Anchored = false
+		active = false
+		task.wait(5)
+		cd = 0
+	end
+end)
+part.Touched:Connect(function(hit)
+	if hit.Parent:FindFirstChild("Humanoid") and hit.Parent ~= script.Parent.Parent.Parent and	active == true	then
+		local vic = hit.Parent
+		hit.AssemblyLinearVelocity=(vic.HumanoidRootPart.Position-atk.HumanoidRootPart.Position).Unit *500
+		vic:FindFirstChild("Humanoid").Health = 0
+	end
+end)
+
+local part = script.Parent
+local tool = script.Parent.Parent
+local atk = tool.Parent.Parent.Character
+local hrp = atk:WaitForChild("HumanoidRootPart")
+local ts = game:GetService("TweenService")
+local cd = 0
+
+script.Parent.Parent.Equipped:Connect(function()
+	local light = Instance.new("PointLight")
+	light.Parent = script.Parent
+	light.Name = "pointlight"
+	light.Color = Color3.new(0, 0.0156863, 1)
+	light.Brightness = 10
+end)
+
+script.Parent.mousepos.OnServerEvent:Connect(function(plr,mousepos)
+	if cd == 0 then
+		cd = 1
+		script.Parent.pointlight:Destroy()
+		local tsi = TweenInfo.new(0.5,Enum.EasingStyle.Linear,Enum.EasingDirection.In)
+		local goal = {
+			Position = mousepos.Position + Vector3.new(0,3,0)
+		}
+		local hitbox = Instance.new("Part")
+		hitbox.Size = Vector3.new(10,10,10)
+		hitbox.Parent = workspace
+		hitbox.CFrame = mousepos - Vector3.new(0,10,0)
+		hitbox.Rotation = Vector3.new(0,0,0)
+		hitbox.Anchored = true
+		hitbox.Transparency = 0
+		hitbox.CanCollide = false
+		hitbox.Touched:Connect(function(hit)
+			if hit.Parent:FindFirstChild("Humanoid") and hit.Parent ~= script.Parent.Parent.Parent then
+				local vic = hit.Parent
+				hit.AssemblyLinearVelocity=(vic.HumanoidRootPart.Position-hitbox.Position).Unit *500
+				vic:FindFirstChild("Humanoid").Health = 0
+			end
+		end)
+
+		ts:Create(hitbox,tsi,goal):Play()
+		task.wait(1)
+		hitbox:Destroy()
+		task.wait(2)
+		local light = Instance.new("PointLight")
+		light.Parent = script.Parent
+		light.Name = "pointlight"
+		light.Color = Color3.new(0, 0.0156863, 1)
+		light.Brightness = 10
+		cd = 0
+	end
+end)
+
+local part = script.Parent
+local tool = script.Parent.Parent
+local active = false
+local atk = tool.Parent.Parent.Character
+local hrp = atk:WaitForChild("HumanoidRootPart")
+local launchPower = 160
+local upwardBoost = 30
+local cd = 0
+local function applyForce(part)
+	local attachment = Instance.new("Attachment")
+	attachment.Parent = part
+	attachment.WorldPosition = part.AssemblyCenterOfMass
+
+	part.AssemblyLinearVelocity += Vector3.new(0, 600, 0)
+	task.wait(0.1)
+	local lv = Instance.new("LinearVelocity")
+	part.AssemblyLinearVelocity = part.CFrame.LookVector * 100 + Vector3.new(0, 60, 0)
+	lv.Attachment0 = attachment
+	lv.MaxForce = part.AssemblyMass * 2000
+	lv.VectorVelocity = part.CFrame.LookVector * launchPower + Vector3.new(0, upwardBoost, 0)
+	lv.Parent = attachment
+
+	game:GetService("Debris"):AddItem(attachment, 0.1)
+end
+
+tool.Activated:Connect(function()
+	if cd == 0 then
+	cd = 1
+	print("atk")
+	active = true
+	applyForce(hrp)
+	atk.Humanoid:LoadAnimation(script.hammeratk):Play()
+	task.wait(1)
+	cd = 0
+	active = false
+	end
+end)
+part.Touched:Connect(function(hit)
+	if hit.Parent:FindFirstChild("Humanoid") and hit.Parent ~= script.Parent.Parent.Parent and	active == true	then
+		local vic = hit.Parent
+		hit.AssemblyLinearVelocity=(vic.HumanoidRootPart.Position-atk.HumanoidRootPart.Position).Unit *500
+		vic:FindFirstChild("Humanoid").Health = 0
+	end
+end)
+
+local pathcd = game.ReplicatedStorage.pathcd
+local pathtype = workspace.rgbpath.path:GetChildren()
+local parts = workspace .rgbpath.path:GetDescendants()
+while true do
+	pathcd.Value = 8
+	local nowtype = pathtype[math.random(1,6)]
+	game.ReplicatedStorage.pathtype.Value = nowtype.Name
+	for i = 1,8 do
+		task.wait(1)
+		pathcd.Value -= 1
+	end
+	for i , v in pairs(parts) do
+		if v:IsA("Part") then
+			v.CanCollide = false
+			v.Transparency = 1
+		end
+	end
+	for i , v in pairs(nowtype:GetChildren()) do
+		v.CanCollide = true
+		v.Transparency = 0.35
+	end
+	task.wait(2)
+	for i , v in pairs(parts) do
+		if v:IsA("Part") then
+			v.CanCollide = true
+			v.Transparency = 0.5
+		end
+	end
+end
