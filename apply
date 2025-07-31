@@ -137,6 +137,11 @@ workspace.toolgivers.bhammergiver.bhammergiver.Touched:Connect(function(hit)
 	end
 end)
 
+
+-- this is other code (full version in game)
+
+
+
 local TweenService = game:GetService("TweenService")
 local tweenInfo = TweenInfo.new(20, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
 local goal = {
